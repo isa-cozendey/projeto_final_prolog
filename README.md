@@ -1,6 +1,6 @@
 # Projeto de Programação Lógica - O Alquimista
 
-Este projeto apresenta um jogo de simulação simplificado, referenciando outro jogo chamado "Little Alchemy". O objetivo do jogo é combinar elementos básicos (fogo, terra, água e ar) para formar novas misturas, e ao fim, realizar o "Grande Final": conseguir combinar as três misturas/elemntos que formam a Pedra Filosofal.
+Este projeto apresenta um jogo de simulação simplificado, referenciando outro jogo chamado "Little Alchemy". O objetivo do jogo é combinar elementos básicos (fogo, terra, água e ar) para formar novas misturas, e ao fim, realizar o "Grande Final": conseguir combinar as três misturas/elementos que formam a Pedra Filosofal.
 
 ## Descrição do jogo
 "O Alquimista" é um jogo de terminal que se resume na interação de elementos e misturas definidos por fatos e regras como "misturar/2" ou "ver_inventario". Nele, o jogador tem liberdade de tentar combinar qualquer elemento, mas é necessário estratégia pois a energia do alquimista diminui a cada interação (mana). A descoberta de novos elementos permite acesso a misturas mais complexas. O jogador vence ao conseguir reunir os três elementos necessários para o "Grande Final" que forma a Pedra Filosofal.
