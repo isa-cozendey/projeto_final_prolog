@@ -83,22 +83,27 @@ Atenção: não é possível usar o interpretador online pois ele não armazena 
 1. Comando para inicar o jogo:
    ?- iniciar.
    Saída esperada:
+<img width="463" height="276" alt="image" src="https://github.com/user-attachments/assets/ff62bdc0-e163-4a38-9dd9-13d8305aa7e7" />
 
 2. Comando para exibir o inventario:
    ?- ver_inventario.
    Saída esperada:
+<img width="463" height="149" alt="image" src="https://github.com/user-attachments/assets/a4d8b850-8233-4e25-aa4d-461615aeb659" />
 
 3. Mistura com sucesso:
    ?- misturar(fogo, terra).
    Saída esperada:
+<img width="522" height="109" alt="image" src="https://github.com/user-attachments/assets/1e31a98a-5ec3-4e3f-a97f-079a6082e0e2" />
 
 4. Regra de dedução lógica:
    ?- misturar(agua, lava).
    Saída esperada:
+<img width="620" height="90" alt="image" src="https://github.com/user-attachments/assets/ddaf5180-fafc-49e9-a838-b91d0bec46d7" />
 
 5. O grande final:
    ?- grande_final([vida, energia], [lava]).
    Saída esperada:
+<img width="426" height="175" alt="image" src="https://github.com/user-attachments/assets/999940f6-ef58-41da-8445-f628ae96b3e1" />
 
 ## Conclusão
 Este projeto permitiu o desenvolvimento de forma prática dos conceitos aprendidos em aula, mostrando que mesmo em um paradigma declarativo, é possível criar sistemas interativos e complexos. O uso de Cut foi o ponto mais desafiador, por utilizar um conceito sensível como o "Red Cut" foi necessário pensar estrategicamente para que ocorresse o comportamento desejado. 
