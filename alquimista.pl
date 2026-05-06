@@ -1,8 +1,7 @@
-% --- BASE DINÂMICA ---
 :- dynamic inventario/1.
 :- dynamic mana/1.
 
-% --- FATOS (O DOMÍNIO) ---
+% fatos
 receita(agua, terra, lama).
 receita(fogo, terra, lava).
 receita(fogo, ar, energia).
@@ -14,7 +13,7 @@ receita(energia, pantano, vida).
 combina(E1, E2, Res) :- receita(E1, E2, Res).
 combina(E1, E2, Res) :- receita(E2, E1, Res).
 
-% --- INICIALIZAÇÃO ---
+% inicio
 iniciar :-
 retractall(inventario(Lixo1)),
 retractall(mana(Lixo2)),
@@ -33,7 +32,7 @@ write(' - ver_inventario.'), nl,
 write(' - ver_dicas.'), nl,
 write(' - grande_final([Itens1], [Itens2]).'), nl, nl.
 
-% --- LÓGICA DE FLUXO E ARITMÉTICA ---
+
 misturar(ItemA, ItemB) :-
 mana(M), M < 2,
 ( (inventario(vida), inventario(energia), inventario(lava)) ->
@@ -53,7 +52,8 @@ retract(mana(M)),
 assertz(mana(NovaMana)),
 processar_mistura(E1, E2).
 
-% --- CONTROLE DE FLUXO (!, fail) E DEDUÇÃO LÓGICA ---
+
+
 processar_mistura(E1, E2) :-
 combina(E1, E2, NovoItem),
 not(inventario(NovoItem)),
@@ -79,7 +79,9 @@ write('CUIDADO! A lava incinerou o outro item. Você obteve: cinzas.'), nl, !.
 processar_mistura(Falha1, Falha2) :-
 write('A mistura falhou. Uma gosma inútil se formou e evaporou.'), nl.
 
-% --- AGREGAÇÃO (findall, setof) ---
+
+
+
 ver_inventario :-
 ( setof(X, inventario(X), ListaOrdenada) ->
 true
@@ -97,7 +99,8 @@ findall(I, inventario(I), Todos),
 length(Todos, Qtd),
 format('Total de elementos descobertos: ~w~n', [Qtd]).
 
-% --- SISTEMA DE DICAS (O ORÁCULO) ---
+
+
 ver_dicas :-
 findall(Alvo, (receita(Ing1, Ing2, Alvo), not(inventario(Alvo))), ListaBruta),
 sort(ListaBruta, DicasUnicas),
@@ -109,7 +112,9 @@ write('O universo sussurra que você ainda pode transmutar os seguintes elemento
 write(DicasUnicas), nl
 ).
 
-% --- MANIPULAÇÃO DE LISTAS E O GRANDE FINAL ---
+
+
+
 grande_final(Lista1, Lista2) :-
 append(Lista1, Lista2, Caldeirao),
 length(Caldeirao, Tamanho),
