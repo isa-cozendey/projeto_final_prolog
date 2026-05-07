@@ -13,10 +13,10 @@ receita(energia, pantano, vida).
 combina(E1, E2, Res) :- receita(E1, E2, Res).
 combina(E1, E2, Res) :- receita(E2, E1, Res).
 
-% inicio
+% iniciar
 iniciar :-
-retractall(inventario(Lixo1)),
-retractall(mana(Lixo2)),
+retractall(inventario(_)),
+retractall(mana(_)),
 assertz(inventario(agua)),
 assertz(inventario(fogo)),
 assertz(inventario(terra)),
@@ -33,7 +33,7 @@ write(' - ver_dicas.'), nl,
 write(' - grande_final([Itens1], [Itens2]).'), nl, nl.
 
 
-misturar(ItemA, ItemB) :-
+misturar(_, _) :-
 mana(M), M < 2,
 ( (inventario(vida), inventario(energia), inventario(lava)) ->
 write('Sua mana acabou, mas o Grande Final ainda e possivel!'), nl
@@ -68,15 +68,15 @@ inventario(NovoItem),
 write('Você já possui esse item no inventário. Tente ser mais criativo!'), nl,
 !.
 
-processar_mistura(lava, OutroItem) :-
+processar_mistura(lava, _) :-
 not(inventario(cinzas)), assertz(inventario(cinzas)),
 write('CUIDADO! A lava incinerou o outro item. Você obteve: cinzas.'), nl, !.
 
-processar_mistura(OutroItem, lava) :-
+processar_mistura(_, lava) :-
 not(inventario(cinzas)), assertz(inventario(cinzas)),
 write('CUIDADO! A lava incinerou o outro item. Você obteve: cinzas.'), nl, !.
 
-processar_mistura(Falha1, Falha2) :-
+processar_mistura(_, _) :-
 write('A mistura falhou. Uma gosma inútil se formou e evaporou.'), nl.
 
 
@@ -102,7 +102,7 @@ format('Total de elementos descobertos: ~w~n', [Qtd]).
 
 
 ver_dicas :-
-findall(Alvo, (receita(Ing1, Ing2, Alvo), not(inventario(Alvo))), ListaBruta),
+findall(Alvo, (receita(_, _, Alvo), not(inventario(Alvo))), ListaBruta),
 sort(ListaBruta, DicasUnicas),
 write('--- VISÕES DO FUTURO ---'), nl,
 ( DicasUnicas == [] ->
